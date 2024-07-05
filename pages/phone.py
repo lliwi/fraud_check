@@ -79,50 +79,18 @@ if phone_txt:
     response = json.loads(v.phone_number_validation_api(phone, 'ES'))
 
     try:
-            #Message
-            st.markdown(f"**Message:**")
-            st.write(response['message'])
-            #Success
-            st.markdown(f"**Success:**")
-            if response['success'] == True:
-                st.image('./media/check.png',width=20)
-            else:
-                st.image('./media/cross.png')
-            #Valid
-            st.markdown(f"**Valid:**")
-            if response['valid'] == True:
-                st.image('./media/check.png',width=20)
-            else:
-                st.image('./media/cross.png')
-            #Fraud score
+           
+            st.markdown(f"**Message:** {response['message']}")
+            #st.markdown(f"**Success:** {response['success']}")
+            #st.markdown(f"**Valid:** {response['valid']}")
             st.progress(response['fraud_score'], text="**Fraud score:**")
-            #Abuse
-            st.markdown(f"**Recent abuse:**")
-            if response['recent_abuse'] == True:
-                st.image('./media/check.png',width=20)
-            else:
-                st.image('./media/cross.png')
-            #VOIP
-            st.markdown(f"**VOIP:**")
-            if response['VOIP'] == True:
-                st.image('./media/check.png',width=20)
-            else:
-                st.image('./media/cross.png')
-            #carrier
-            st.markdown(f"**Carrier:**")
-            st.write(response['carrier'])
-            #Line tipe
-            st.markdown(f"**Line type:**")
-            st.write(response['line_type'])
-            #Country
-            st.markdown(f"**Country:**")
-            st.write(f"**Country** {response['country']}")
-            #City
-            st.markdown(f"**City:**")
-            st.markdown(esponse['city'])
-            #Region
-            st.markdown(f"**Region:**")
-            st.write(response['region'])
+            st.markdown(f"**Recent abuse:** {response['recent_abuse']}")
+            st.markdown(f"**VOIP:** {response['VOIP']}")
+            st.markdown(f"**Carrier:** {response['carrier']}")
+            st.markdown(f"**Line type:** {response['line_type']}")
+            st.markdown(f"**Country:** {response['country']}")
+            #st.markdown(f"**City:** {response['city']}")
+            st.markdown(f"**Region:** {response['region']}")
 
     except:
             pass

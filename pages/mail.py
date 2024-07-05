@@ -77,28 +77,13 @@ if email_txt:
     response = json.loads(v.email_validation_api(email))
     try:
         #Success
-        st.markdown(f"**Sucess:**")
-        if response['success'] == True:
-            st.image('./media/check.png',width=20)
-        else:
-            st.image('./media/cross.png')
-        #Valid
-        st.markdown(f"**valid:**")
-        if response['valid'] == True:
-            st.image('./media/check.png',width=20)
-        else:
-            st.image('./media/cross.png')
-        #Nombre
-        st.markdown(f"**Nombre:**")
-        st.write(response['first_name'])
-        #Fraud score
+        #st.markdown(f"**Sucess:** {response['success'] }")
+        st.markdown(f"**Valid:** {response['valid'] }")
+        st.markdown(f"**Nombre:** {response['first_name'] }")
         st.progress(response['fraud_score'], text="**Fraud score:**")
-        #Leaked
-        st.markdown(f"**leaked:**")
-        if response['leaked'] == True:
-            st.image('./media/check.png',width=20)
-        else:
-            st.image('./media/cross.png')
+        st.markdown(f"**Leaked:** {response['leaked'] }")
+        st.markdown(f"**Damain age:** {response['domain_age']['human'] }")
+        st.markdown(f"**First seen:** {response['first_seen']['human'] }")
         #st.markdown(f"**User activity:** {response['user_activity']}")
     except:
         pass
