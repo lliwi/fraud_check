@@ -4,8 +4,11 @@ import requests
 from typing import Union
 from wtforms.validators import Email
 import json
+from dotenv import load_dotenv
+import os
 
-os.environ['API_KEY']
+load_dotenv()
+API_KEY = os.getenv("API_KEY")
 
 
 class Validate(object):
