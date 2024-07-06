@@ -21,3 +21,4 @@ if __name__ == "__main__":
     if 'IPQS_API_KEY' not in st.session_state:
         load_dotenv()
         st.session_state.IPQS_API_KEY = os.getenv("IPQS_API_KEY")
+        st.session_state.APILAYER_KEY = os.getenv("APILAYER_KEY")

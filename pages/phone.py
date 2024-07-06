@@ -60,40 +60,35 @@ class Validate(object):
         return response.text
 st.image('./media/banner.png')
 v = Validate(st.session_state.IPQS_API_KEY)
-
-
-    
-    
+ 
 
 phone_txt = st.text_input("Telefono", placeholder="34666554422", key="phone")
-
     
-    
-   
 
 if phone_txt:
-    phone = phone_txt
-    response = json.loads(v.phone_number_validation_api(phone, 'ES'))
+    with st.spinner('Cargando datos ...'):
+        phone = phone_txt
+        response = json.loads(v.phone_number_validation_api(phone, 'ES'))
 
-    try:
-           
-            st.markdown(f"**Message:** {response['message']}")
-            #st.markdown(f"**Success:** {response['success']}")
-            #st.markdown(f"**Valid:** {response['valid']}")
-            st.progress(response['fraud_score'], text="**Fraud score:**")
-            st.markdown(f"**Recent abuse:** {response['recent_abuse']}")
-            st.markdown(f"**VOIP:** {response['VOIP']}")
-            st.markdown(f"**Carrier:** {response['carrier']}")
-            st.markdown(f"**Line type:** {response['line_type']}")
-            st.markdown(f"**Country:** {response['country']}")
-            #st.markdown(f"**City:** {response['city']}")
-            st.markdown(f"**Region:** {response['region']}")
+        try:
+            
+                st.markdown(f"**Message:** {response['message']}")
+                #st.markdown(f"**Success:** {response['success']}")
+                #st.markdown(f"**Valid:** {response['valid']}")
+                st.progress(response['fraud_score'], text="**Fraud score:**")
+                st.markdown(f"**Recent abuse:** {response['recent_abuse']}")
+                st.markdown(f"**VOIP:** {response['VOIP']}")
+                st.markdown(f"**Carrier:** {response['carrier']}")
+                st.markdown(f"**Line type:** {response['line_type']}")
+                st.markdown(f"**Country:** {response['country']}")
+                #st.markdown(f"**City:** {response['city']}")
+                st.markdown(f"**Region:** {response['region']}")
 
-    except:
-            pass
+        except:
+                pass
 
 
-    with st.expander("RAW response"):
-        st.write(response)
+        with st.expander("RAW response"):
+            st.write(response)
 
-st.markdown(f"*Datos obtenidos de [IPQS](https://www.ipqualityscore.com)*")
+st.markdown(f"*Datos obtenidos de [IPQS](https://www.ipqualityscore.com) FreeAPI 20 consultas al dia*")

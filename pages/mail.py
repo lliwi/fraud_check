@@ -72,24 +72,25 @@ email_txt = st.text_input("Email", placeholder="foo@bar.com", key="email")
     
       
 if email_txt:
-    email = email_txt
-    response = json.loads(v.email_validation_api(email))
-    try:
-        #Success
-        #st.markdown(f"**Sucess:** {response['success'] }")
-        st.markdown(f"**Valid:** {response['valid'] }")
-        st.markdown(f"**Nombre:** {response['first_name'] }")
-        st.progress(response['fraud_score'], text="**Fraud score:**")
-        st.markdown(f"**Leaked:** {response['leaked'] }")
-        st.markdown(f"**Damain age:** {response['domain_age']['human'] }")
-        st.markdown(f"**First seen:** {response['first_seen']['human'] }")
-        #st.markdown(f"**User activity:** {response['user_activity']}")
-    except:
-        pass
+    with st.spinner('Cargando datos ...'):
+        email = email_txt
+        response = json.loads(v.email_validation_api(email))
+        try:
+            #Success
+            #st.markdown(f"**Sucess:** {response['success'] }")
+            st.markdown(f"**Valid:** {response['valid'] }")
+            st.markdown(f"**Nombre:** {response['first_name'] }")
+            st.progress(response['fraud_score'], text="**Fraud score:**")
+            st.markdown(f"**Leaked:** {response['leaked'] }")
+            st.markdown(f"**Damain age:** {response['domain_age']['human'] }")
+            st.markdown(f"**First seen:** {response['first_seen']['human'] }")
+            #st.markdown(f"**User activity:** {response['user_activity']}")
+        except:
+            pass
 
 
-    with st.expander("RAW response"):
-        st.write(response)
+        with st.expander("RAW response"):
+            st.write(response)
 
-st.markdown(f"*Datos obtenidos de [IPQS](https://www.ipqualityscore.com)*")
+st.markdown(f"*Datos obtenidos de [IPQS](https://www.ipqualityscore.com) FreeAPI 20 consultas al dia*")
    
