@@ -4,11 +4,8 @@ import requests
 from typing import Union
 from wtforms.validators import Email
 import json
-from dotenv import load_dotenv
 import os
 
-load_dotenv()
-API_KEY = os.getenv("API_KEY")
 
 
 class Validate(object):
@@ -34,7 +31,7 @@ class Validate(object):
         self.format = format
         self.base_url = f"https://www.ipqualityscore.com/api/{self.format}/"
 
-    
+
     def phone_number_validation_api(self, phone_number: str, country: Union[str, list], strictness: int = 0) -> str:
         """
         Returns the response from the IPQS Phone Number Validation API.
@@ -62,7 +59,7 @@ class Validate(object):
         response = requests.get(url, params=params)
         return response.text
 st.image('./media/banner.png')
-v = Validate(API_KEY)
+v = Validate(st.session_state.IPQS_API_KEY)
 
 
     
@@ -98,3 +95,5 @@ if phone_txt:
 
     with st.expander("RAW response"):
         st.write(response)
+
+st.markdown(f"*Datos obtenidos de [IPQS](https://www.ipqualityscore.com)*")

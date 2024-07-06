@@ -4,11 +4,9 @@ import requests
 from typing import Union
 from wtforms.validators import Email
 import json
-from dotenv import load_dotenv
 import os
 
-load_dotenv()
-API_KEY = os.getenv("API_KEY")
+
 
 
 
@@ -34,6 +32,7 @@ class Validate(object):
         self.key = key
         self.format = format
         self.base_url = f"https://www.ipqualityscore.com/api/{self.format}/"
+
 
     def email_validation_api(self, email: str, timeout: int = 7, fast: str = 'false', abuse_strictness: int = 0) -> str:
         """
@@ -67,7 +66,7 @@ class Validate(object):
         return response.text
 
 st.image('./media/banner.png')
-v = Validate(API_KEY)
+v = Validate(st.session_state.IPQS_API_KEY)
 email_txt = st.text_input("Email", placeholder="foo@bar.com", key="email")
 
     
@@ -91,4 +90,6 @@ if email_txt:
 
     with st.expander("RAW response"):
         st.write(response)
+
+st.markdown(f"*Datos obtenidos de [IPQS](https://www.ipqualityscore.com)*")
    
