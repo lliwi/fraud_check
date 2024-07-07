@@ -22,3 +22,10 @@ if __name__ == "__main__":
         load_dotenv()
         st.session_state.IPQS_API_KEY = os.getenv("IPQS_API_KEY")
         st.session_state.APILAYER_KEY = os.getenv("APILAYER_KEY")
+
+    d = {'Recurso':['OSINT Framework','IPQS','APILayer','holele','Intelligence X','numverufy','emailrep','sherlock','maltego','trustfull','pipl'], 
+    'link':['https://osintframework.com','https://www.ipqualityscore.com','https://apilayer.com','https://github.com/megadose/holehe','https://intelix.io','https://numverify.com','https://emailrep.io','https://github.com/sherlock-project/sherlock','https://www.maltego.com','https://trustfull.com','https://pipl.com']}
+    df = pd.DataFrame(data=d)
+    
+    with st.expander("Recursos OSINT"):
+        st.dataframe(df,hide_index=True)
