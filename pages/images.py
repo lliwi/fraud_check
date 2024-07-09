@@ -52,7 +52,7 @@ if uploaded_file:
             f.write(uploaded_file.getvalue())
 
         url = serve_image(path, 'please_do_not_crash')
-        st.write('http://' + get_page_location()['host']  + url)
+        st.write('http://' + get_page_location()['host']  + '/~/+' + url)
 
         with st.expander('RAW'):
             response = buscar_imagen('http://' + get_page_location()['host']  + '/~/+' + url)
