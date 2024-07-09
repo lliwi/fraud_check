@@ -51,8 +51,11 @@ if uploaded_file:
 
         url = serve_image(path, 'please_do_not_crash')
         r = buscar_imagen('http://' + get_page_location()['host']  + '/~/+' + url)
-        response = json.loads(r)
+        
         time.sleep(2)
+        try:
+        response = json.loads(r)
+        
         for match in response['visual_matches']:
             st.markdown(f"***Title:*** {match['title']}")
             st.markdown(f"***Link:*** {match['link']}")
@@ -61,3 +64,5 @@ if uploaded_file:
 
         with st.expander('RAW'):
             st.write(response)
+        except:
+            st.write('No se encontraron resultados')
