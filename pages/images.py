@@ -36,11 +36,6 @@ def buscar_imagen(query):
 
 st.image('./media/banner.png')
 
-input_txt = st.text_input("url")
-if input_txt:
-    with st.spinner('Cargando datos ...'):
-        response = buscar_imagen(input_txt)
-        st.write(response)
 
 uploaded_file = st.file_uploader("File upload")
 if uploaded_file:
@@ -52,11 +47,8 @@ if uploaded_file:
             f.write(uploaded_file.getvalue())
 
         url = serve_image(path, 'please_do_not_crash')
-        st.write('http://' + get_page_location()['host']  + '/~/+' + url)
+        #st.write('http://' + get_page_location()['host']  + '/~/+' + url)
 
         with st.expander('RAW'):
             response = buscar_imagen('http://' + get_page_location()['host']  + '/~/+' + url)
             st.write(response)
-
-    #https://fraudcheck-2hbncuuuuego67fnv6itbf.streamlit.app/~/+/media/432e5bbe504fabf7ff430caec9559cc48a64d3c19956bc8668e67e52.jpg
-    #http://fraudcheck-2hbncuuuuego67fnv6itbf.streamlit.app/media/432e5bbe504fabf7ff430caec9559cc48a64d3c19956bc8668e67e52.jpg
