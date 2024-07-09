@@ -52,7 +52,7 @@ if uploaded_file:
         url = serve_image(path, 'please_do_not_crash')
         r = buscar_imagen('http://' + get_page_location()['host']  + '/~/+' + url)
         
-        time.sleep(2)
+        #time.sleep(2)
         try:
             response = json.loads(r)
             
