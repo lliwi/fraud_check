@@ -49,9 +49,13 @@ if uploaded_file:
             f.write(uploaded_file.getvalue())
 
         url = serve_image(path, 'please_do_not_crash')
-        response = buscar_imagen('http://' + get_page_location()['host']  + '/~/+' + url)
+        r = buscar_imagen('http://' + get_page_location()['host']  + '/~/+' + url)
+        response = json.loads(r)
 
-        st.write(response)
+        for match in response["visual_matches"]:
+            st.markdown(f"***Title:*** {match["title"]}")
+            print(f"***Link:*** {match["link"]}")
+            print(f"***Source:*** {match["source"]}")
        
 
         with st.expander('RAW'):
