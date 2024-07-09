@@ -28,9 +28,11 @@ def buscar_imagen(query):
 
     search = GoogleSearch(params)                   # data extraction on the SerpApi backend
     google_lens_results = search.get_dict()         # JSON -> Python dict
-
-    del google_lens_results['search_metadata']
-    del google_lens_results['search_parameters']
+    try:
+        del google_lens_results['search_metadata']
+        del google_lens_results['search_parameters']
+    except:
+        pass
 
     return json.dumps(google_lens_results, indent=2, ensure_ascii=False)
 
@@ -48,10 +50,9 @@ if uploaded_file:
 
         url = serve_image(path, 'please_do_not_crash')
         response = buscar_imagen('http://' + get_page_location()['host']  + '/~/+' + url)
-
-        for result in response['visual_matches']:
-            st.markdown(f"***Titulo:*** {result[0]['title']}")
-            st.markdown(f"***Link:*** {result[0]['link']}")
+        
+        
+       
 
         with st.expander('RAW'):
             st.write(response)
