@@ -55,5 +55,8 @@ if uploaded_file:
         st.write('http://' + get_page_location()['host']  + url)
 
         with st.expander('RAW'):
-            response = buscar_imagen('http://' + get_page_location()['host']  + url)
+            response = buscar_imagen('http://' + get_page_location()['host']  + '/~/+' + url)
             st.write(response)
+
+    #https://fraudcheck-2hbncuuuuego67fnv6itbf.streamlit.app/~/+/media/432e5bbe504fabf7ff430caec9559cc48a64d3c19956bc8668e67e52.jpg
+    #http://fraudcheck-2hbncuuuuego67fnv6itbf.streamlit.app/media/432e5bbe504fabf7ff430caec9559cc48a64d3c19956bc8668e67e52.jpg
