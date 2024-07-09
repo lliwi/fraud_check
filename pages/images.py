@@ -7,6 +7,7 @@ from streamlit.runtime import caching
 import os
 import tempfile
 from streamlit_js_eval import get_page_location
+import time
 
 
 def serve_image(image, image_id):
@@ -51,11 +52,11 @@ if uploaded_file:
         url = serve_image(path, 'please_do_not_crash')
         r = buscar_imagen('http://' + get_page_location()['host']  + '/~/+' + url)
         response = json.loads(r)
-
-        for match in response["visual_matches"]:
-            st.markdown(f"***Title:*** {match["title"]}")
-            print(f"***Link:*** {match["link"]}")
-            print(f"***Source:*** {match["source"]}")
+        time.sleep(2)
+        for match in response['visual_matches']:
+            st.markdown(f"***Title:*** {match['title']}")
+            print(f"***Link:*** {match['link']}")
+            print(f"***Source:*** {match['source']}")
        
 
         with st.expander('RAW'):
