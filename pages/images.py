@@ -55,8 +55,8 @@ if uploaded_file:
         time.sleep(2)
         for match in response['visual_matches']:
             st.markdown(f"***Title:*** {match['title']}")
-            print(f"***Link:*** {match['link']}")
-            print(f"***Source:*** {match['source']}")
+            st.markdown(f"***Link:*** {match['link']}")
+            st.markdown(f"***Source:*** {match['source']}")
        
 
         with st.expander('RAW'):
