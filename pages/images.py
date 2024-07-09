@@ -51,7 +51,7 @@ if uploaded_file:
         url = serve_image(path, 'please_do_not_crash')
         response = buscar_imagen('http://' + get_page_location()['host']  + '/~/+' + url)
         
-        st.write(response['visual_matches'])
+        st.write(type(response))
        
 
         with st.expander('RAW'):
