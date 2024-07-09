@@ -55,4 +55,4 @@ if uploaded_file:
        
 
         with st.expander('RAW'):
-            st.write(response.json())
+            st.write(response)
