@@ -49,9 +49,9 @@ if uploaded_file:
             f.write(uploaded_file.getvalue())
 
         url = serve_image(path, 'please_do_not_crash')
-        r = buscar_imagen('http://' + get_page_location()['host']  + '/~/+' + url)
-        response =  r.json()
-        st.write(type(response))
+        response = buscar_imagen('http://' + get_page_location()['host']  + '/~/+' + url)
+
+        st.write(response)
        
 
         with st.expander('RAW'):
