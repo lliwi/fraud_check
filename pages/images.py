@@ -54,15 +54,15 @@ if uploaded_file:
         
         time.sleep(2)
         try:
-        response = json.loads(r)
+            response = json.loads(r)
+            
+            for match in response['visual_matches']:
+                st.markdown(f"***Title:*** {match['title']}")
+                st.markdown(f"***Link:*** {match['link']}")
+                st.markdown(f"***Source:*** {match['source']}")
         
-        for match in response['visual_matches']:
-            st.markdown(f"***Title:*** {match['title']}")
-            st.markdown(f"***Link:*** {match['link']}")
-            st.markdown(f"***Source:*** {match['source']}")
-       
 
-        with st.expander('RAW'):
-            st.write(response)
+            with st.expander('RAW'):
+                st.write(response)
         except:
             st.write('No se encontraron resultados')
