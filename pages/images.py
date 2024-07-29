@@ -37,8 +37,7 @@ elif (st.session_state['pwd_correct'] == True and st.session_state["form_submitt
         'api_key': st.session_state.SERPAPI_KEY ,
         'engine': 'google_lens',
         'url': query,
-        'hl': 'en',
-        'no_cache':true
+        'hl': 'en'
         }   
 
         search = GoogleSearch(params)                   # data extraction on the SerpApi backend
