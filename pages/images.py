@@ -38,6 +38,7 @@ elif (st.session_state['pwd_correct'] == True and st.session_state["form_submitt
         'engine': 'google_lens',
         'url': query,
         'hl': 'en',
+        'filter':0
         }   
 
         search = GoogleSearch(params)                   # data extraction on the SerpApi backend
@@ -61,9 +62,12 @@ elif (st.session_state['pwd_correct'] == True and st.session_state["form_submitt
             st.image(uploaded_file)
             with open(path, "wb") as f:
                 f.write(uploaded_file.getvalue())
-
-            url = serve_image(path, 'please_do_not_crash')
-            r = buscar_imagen('http://' + get_page_location()['host']  + '/~/+' + url)
+            try:
+                url = serve_image(path, 'please_do_not_crash')
+                server_host = get_page_location()['host']
+            except:
+                pass
+            r = buscar_imagen('http://' + server_host + '/~/+' + url)
             
             #time.sleep(2)
             try:
