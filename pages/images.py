@@ -83,7 +83,7 @@ elif (st.session_state['pwd_correct'] == True and st.session_state["form_submitt
             
 
                 with st.expander('RAW'):
-                    st.write(json.loads(r))
+                    st.write(response)
             except:
                 st.write('No se encontraron resultados')
 else:
