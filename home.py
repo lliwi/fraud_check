@@ -47,9 +47,9 @@ elif (st.session_state['pwd_correct'] == True and st.session_state["form_submitt
 
     if 'IPQS_API_KEY' not in st.session_state:
         #load_dotenv()
-        st.session_state.IPQS_API_KEY = os.environ("IPQS_API_KEY")
-        st.session_state.APILAYER_KEY = os.environ("APILAYER_KEY")
-        st.session_state.SERPAPI_KEY = os.environ("SERPAPI_KEY")
+        st.session_state.IPQS_API_KEY = st.secrets["IPQS_API_KEY"]
+        st.session_state.APILAYER_KEY = st.secrets["APILAYER_KEY"]
+        st.session_state.SERPAPI_KEY = st.secrets["SERPAPI_KEY"]
 
     d = {'Recurso':['OSINT Framework','IPQS','APILayer','holele','Intelligence X','numverufy','emailrep','sherlock','maltego','trustfull','pipl'], 
     'link':['https://osintframework.com','https://www.ipqualityscore.com','https://apilayer.com','https://github.com/megadose/holehe','https://intelix.io','https://numverify.com','https://emailrep.io','https://github.com/sherlock-project/sherlock','https://www.maltego.com','https://trustfull.com','https://pipl.com']}
