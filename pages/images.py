@@ -56,8 +56,7 @@ elif (st.session_state['pwd_correct'] == True and st.session_state["form_submitt
         img1 = Image.open(image1)
         img2 = Image.open(image2)
         diff = ImageChops.difference(img1, img2)
-        st.write(diff.getbbox())
-        return diff.getbbox() is None
+        return diff.getbbox()
 
     st.image('./media/banner.png')
 
@@ -88,13 +87,13 @@ elif (st.session_state['pwd_correct'] == True and st.session_state["form_submitt
                     st.markdown(f"***Link:*** {match['link']}")
                     st.markdown(f"***Source:*** {match['source']}")
                     st.image(match['thumbnail'])
-                    compare_images(uploaded_file, match['thumbnail'])
-            
+                    compare = compare_images(uploaded_file, match['thumbnail'])
+                    st.write(compare)
 
                 with st.expander('RAW'):
                     st.write(response)
             except:
-                st.write('No se encontraron resultados')
+                pass
 else:
     #display_login_form()
     switch_page("home")
