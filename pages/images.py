@@ -9,6 +9,7 @@ import tempfile
 from streamlit_js_eval import get_page_location
 import time
 from streamlit_extras.switch_page_button import switch_page
+from PIL import Image, ImageChops
 
 if all (key not in st.session_state.keys() for key in ('username', 'pwd', 'pwd_correct', 'form_submitted')):
     st.session_state['username'] = ""
@@ -50,6 +51,13 @@ elif (st.session_state['pwd_correct'] == True and st.session_state["form_submitt
             pass
 
         return json.dumps(google_lens_results, indent=2, ensure_ascii=False)
+    
+    def compare_images(image1, image2):
+        img1 = Image.open(image1)
+        img2 = Image.open(image2)
+        diff = ImageChops.difference(img1, img2)
+        st.write(diff.getbbox())
+        return diff.getbbox() is None
 
     st.image('./media/banner.png')
 
@@ -80,6 +88,7 @@ elif (st.session_state['pwd_correct'] == True and st.session_state["form_submitt
                     st.markdown(f"***Link:*** {match['link']}")
                     st.markdown(f"***Source:*** {match['source']}")
                     st.image(match['thumbnail'])
+                    compare_images(uploaded_file, match['thumbnail'])
             
 
                 with st.expander('RAW'):
